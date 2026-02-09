@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import razorpay from "@/lib/razorpay";
+import { getRazorpayInstance } from "@/lib/razorpay";
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,6 +11,7 @@ export async function POST(req: NextRequest) {
       receipt: `receipt_${Date.now()}`,
     };
 
+    const razorpay = getRazorpayInstance();
     const order = await razorpay.orders.create(options);
 
     return NextResponse.json({
