@@ -1,6 +1,12 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    throw new Error("Missing RESEND_API_KEY environment variable.");
+  }
+  return new Resend(apiKey);
+}
 
 export async function sendPurchaseEmail({
   customerEmail,
@@ -16,6 +22,7 @@ export async function sendPurchaseEmail({
   const driveLink = process.env.GOOGLE_DRIVE_LINK || "#";
   const senderEmail = process.env.SENDER_EMAIL || "onboarding@resend.dev";
 
+  const resend = getResendClient();
   const { data, error } = await resend.emails.send({
     from: `Designora <${senderEmail}>`,
     to: [customerEmail],
