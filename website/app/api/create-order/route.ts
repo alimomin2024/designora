@@ -19,10 +19,11 @@ export async function POST(req: NextRequest) {
       amount: order.amount,
       currency: order.currency,
     });
-  } catch (error) {
-    console.error("Error creating order:", error);
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("Error creating order:", message);
     return NextResponse.json(
-      { error: "Failed to create order" },
+      { error: "Failed to create order", details: message },
       { status: 500 }
     );
   }
