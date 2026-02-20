@@ -50,8 +50,8 @@ export default function TermsOfService() {
         <h2 className="text-xl font-semibold text-white mb-3">4. Pricing and Payment</h2>
         <p>
           All prices are listed in Indian Rupees (INR). Payments are processed securely
-          through Razorpay. The displayed price includes all applicable taxes unless stated
-          otherwise.
+          via UPI (Unified Payments Interface). The displayed price includes all applicable
+          taxes unless stated otherwise.
         </p>
       </div>
 

@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 function SuccessContent() {
   const searchParams = useSearchParams();
-  const paymentId = searchParams.get("payment_id");
+  const paymentId = searchParams.get("txn_id") || searchParams.get("payment_id");
 
   return (
     <main className="min-h-screen bg-background">
@@ -54,7 +54,7 @@ function SuccessContent() {
 
         {paymentId && (
           <p className="text-muted text-sm mb-8">
-            Payment ID:{" "}
+            Transaction ID:{" "}
             <span className="text-white font-mono">{paymentId}</span>
           </p>
         )}

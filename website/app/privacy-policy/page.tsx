@@ -55,9 +55,9 @@ export default function PrivacyPolicy() {
       <div>
         <h2 className="text-xl font-semibold text-white mb-3">4. Payment Security</h2>
         <p>
-          All payment transactions are processed through Razorpay, a PCI-DSS compliant payment
-          gateway. We do not store your credit/debit card details on our servers. All payment
-          information is encrypted and handled securely by Razorpay.
+          All payment transactions are processed via UPI (Unified Payments Interface).
+          We do not store any sensitive payment information on our servers. UPI payments
+          are processed securely through your banking app.
         </p>
       </div>
 
@@ -68,7 +68,7 @@ export default function PrivacyPolicy() {
           share your data only with:
         </p>
         <ul className="list-disc pl-6 space-y-2 mt-2">
-          <li>Payment processors (Razorpay) to complete transactions</li>
+          <li>UPI payment infrastructure to complete transactions</li>
           <li>Email service providers to send purchase confirmations</li>
           <li>Law enforcement if required by law</li>
         </ul>
