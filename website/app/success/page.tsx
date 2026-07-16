@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 
 function SuccessContent() {
   const searchParams = useSearchParams();
-  const paymentId = searchParams.get("txn_id") || searchParams.get("payment_id");
+  const paymentId = searchParams.get("payment_id");
 
   return (
     <main className="min-h-screen bg-background">
@@ -16,7 +16,7 @@ function SuccessContent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link href="/" className="flex items-center gap-2">
-              <span className="text-2xl font-bold text-primary">Designora</span>
+              <span className="text-2xl font-bold text-primary">Designoraa</span>
             </Link>
           </div>
         </div>
@@ -54,7 +54,7 @@ function SuccessContent() {
 
         {paymentId && (
           <p className="text-muted text-sm mb-8">
-            Transaction ID:{" "}
+            Payment ID:{" "}
             <span className="text-white font-mono">{paymentId}</span>
           </p>
         )}

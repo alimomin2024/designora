@@ -18,7 +18,7 @@ export default function FAQ() {
     {
       question: "Is there any expert support available?",
       answer:
-        "Absolutely! We have a dedicated support team ready to assist you with any questions or challenges you may encounter while using the toolkit. You can reach out to us at support@designora.com",
+        "Absolutely! We have a dedicated support team ready to assist you with any questions or challenges you may encounter while using the toolkit. You can reach out to us at support@designoraa.in",
     },
     {
       question: "Will I get lifetime access and future updates?",

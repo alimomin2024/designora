@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Designora - Interior Designer Mastery Bundle | 5000+ Premium Assets",
+  title: "Designoraa - Interior Designer Mastery Bundle | 5000+ Premium Assets",
   description:
     "Get 5000+ premium templates, legal docs, mood boards, assets & files for interior designers. Ready to use, 100% editable, instant download.",
   keywords: [
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     "presentation templates",
   ],
   openGraph: {
-    title: "Designora - Interior Designer Mastery Bundle",
+    title: "Designoraa - Interior Designer Mastery Bundle",
     description:
       "5000+ Templates, Legal Docs & Mood Boards, Assets, Files - Finally In One Place!",
     type: "website",
@@ -45,6 +46,10 @@ export default function RootLayout({
       >
         {children}
         <Analytics />
+        <Script
+          src="https://checkout.razorpay.com/v1/checkout.js"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

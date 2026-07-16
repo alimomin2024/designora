@@ -1,8 +1,8 @@
 import LegalLayout from "@/components/LegalLayout";
 
 export const metadata = {
-  title: "Disclaimer - Designora",
-  description: "Disclaimer for Designora - Interior Designer Mastery Bundle",
+  title: "Disclaimer - Designoraa",
+  description: "Disclaimer for Designoraa - Interior Designer Mastery Bundle",
 };
 
 export default function Disclaimer() {
@@ -15,7 +15,7 @@ export default function Disclaimer() {
       <div>
         <h2 className="text-xl font-semibold text-white mb-3">General Disclaimer</h2>
         <p>
-          The information and materials provided on the Designora website and within the
+          The information and materials provided on the Designoraa website and within the
           Interior Designer Mastery Bundle are for informational and professional development
           purposes only.
         </p>
@@ -74,8 +74,8 @@ export default function Disclaimer() {
         <h2 className="text-xl font-semibold text-white mb-3">Contact Us</h2>
         <p>
           If you have any questions about this disclaimer, please contact us at{" "}
-          <a href="mailto:support@designora.com" className="text-primary hover:underline">
-            support@designora.com
+          <a href="mailto:support@designoraa.in" className="text-primary hover:underline">
+            support@designoraa.in
           </a>
         </p>
       </div>

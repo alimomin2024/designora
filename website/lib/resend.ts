@@ -24,7 +24,7 @@ export async function sendPurchaseEmail({
 
   const resend = getResendClient();
   const { data, error } = await resend.emails.send({
-    from: `Designora <${senderEmail}>`,
+    from: `Designoraa <${senderEmail}>`,
     to: [customerEmail],
     subject: "Your Interior Designer Mastery Bundle - Download Link Inside!",
     html: `
@@ -38,17 +38,20 @@ export async function sendPurchaseEmail({
         <div style="max-width:600px;margin:0 auto;padding:40px 20px;">
           <div style="background-color:#111111;border-radius:16px;padding:40px;border:1px solid #2a2a2a;">
             
+            <!-- Header -->
             <div style="text-align:center;margin-bottom:30px;">
-              <h1 style="color:#f59e0b;font-size:28px;margin:0;">Designora</h1>
+              <h1 style="color:#f59e0b;font-size:28px;margin:0;">Designoraa</h1>
               <p style="color:#888;font-size:14px;margin-top:8px;">Interior Designer Mastery Bundle</p>
             </div>
 
+            <!-- Success Icon -->
             <div style="text-align:center;margin-bottom:24px;">
               <div style="display:inline-block;background-color:#22c55e;border-radius:50%;width:64px;height:64px;line-height:64px;font-size:32px;">
                 &#10003;
               </div>
             </div>
 
+            <!-- Greeting -->
             <h2 style="color:#ffffff;text-align:center;font-size:22px;margin-bottom:8px;">
               Payment Successful!
             </h2>
@@ -56,6 +59,7 @@ export async function sendPurchaseEmail({
               Hi ${customerName}, thank you for your purchase!
             </p>
 
+            <!-- Order Details -->
             <div style="background-color:#1a1a1a;border-radius:12px;padding:20px;margin-bottom:30px;">
               <h3 style="color:#f59e0b;font-size:16px;margin:0 0 16px 0;">Order Details</h3>
               <table style="width:100%;color:#cccccc;font-size:14px;">
@@ -68,12 +72,13 @@ export async function sendPurchaseEmail({
                   <td style="text-align:right;color:#ffffff;">&#8377;${amount}</td>
                 </tr>
                 <tr>
-                  <td style="padding:6px 0;">Transaction ID</td>
+                  <td style="padding:6px 0;">Payment ID</td>
                   <td style="text-align:right;color:#ffffff;font-size:12px;">${paymentId}</td>
                 </tr>
               </table>
             </div>
 
+            <!-- Download Button -->
             <div style="text-align:center;margin-bottom:30px;">
               <a href="${driveLink}" 
                  style="display:inline-block;background:linear-gradient(135deg,#f59e0b,#d97706);color:#000000;font-weight:bold;font-size:18px;padding:16px 40px;border-radius:12px;text-decoration:none;">
@@ -85,11 +90,13 @@ export async function sendPurchaseEmail({
               You can also access your files anytime using the link above. This link will remain active permanently.
             </p>
 
+            <!-- Divider -->
             <hr style="border:none;border-top:1px solid #2a2a2a;margin:24px 0;">
 
+            <!-- Footer -->
             <p style="color:#666666;text-align:center;font-size:12px;margin:0;">
               Need help? Reply to this email or contact us at support.<br>
-              &copy; ${new Date().getFullYear()} Designora. All rights reserved.
+              &copy; ${new Date().getFullYear()} Designoraa. All rights reserved.
             </p>
           </div>
         </div>
@@ -127,7 +134,7 @@ export async function sendSellerNotification({
   const resend = getResendClient();
 
   const { error } = await resend.emails.send({
-    from: `Designora <${senderEmail}>`,
+    from: `Designoraa <${senderEmail}>`,
     to: [sellerEmail],
     subject: `New Sale! ₹${amount} from ${customerName}`,
     html: `
@@ -155,7 +162,7 @@ export async function sendSellerNotification({
                   <td style="text-align:right;color:#22c55e;font-weight:bold;">₹${amount}</td>
                 </tr>
                 <tr>
-                  <td style="padding:8px 0;color:#888;">UPI Transaction ID</td>
+                  <td style="padding:8px 0;color:#888;">UPI Reference Number</td>
                   <td style="text-align:right;color:#ffffff;font-size:12px;">${transactionId}</td>
                 </tr>
                 <tr>
@@ -164,8 +171,8 @@ export async function sendSellerNotification({
                 </tr>
               </table>
             </div>
-            <p style="color:#888;text-align:center;font-size:13px;margin-top:24px;">
-              Verify this UPI transaction ID in your bank/UPI app before confirming delivery.
+            <p style="color:#22c55e;text-align:center;font-size:13px;margin-top:24px;font-weight:bold;">
+              Payment verified by UroPay
             </p>
           </div>
         </div>

@@ -12,14 +12,14 @@ export default function CountdownTimer() {
   useEffect(() => {
     // Set countdown to end of today (or 24 hours from first visit)
     const getEndTime = () => {
-      const stored = localStorage.getItem("designora_countdown_end");
+      const stored = localStorage.getItem("designoraa_countdown_end");
       if (stored) {
         const endTime = parseInt(stored);
         if (endTime > Date.now()) return endTime;
       }
       // Set new 24-hour countdown
       const endTime = Date.now() + 24 * 60 * 60 * 1000;
-      localStorage.setItem("designora_countdown_end", endTime.toString());
+      localStorage.setItem("designoraa_countdown_end", endTime.toString());
       return endTime;
     };
 
@@ -31,7 +31,7 @@ export default function CountdownTimer() {
 
       if (diff <= 0) {
         // Reset timer
-        localStorage.removeItem("designora_countdown_end");
+        localStorage.removeItem("designoraa_countdown_end");
         clearInterval(timer);
         setTimeLeft({ hours: 0, minutes: 0, seconds: 0 });
         return;

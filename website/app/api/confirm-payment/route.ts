@@ -1,31 +1,34 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getOrderStatus } from "@/lib/uropay";
 import { sendPurchaseEmail, sendSellerNotification } from "@/lib/resend";
 
 export async function POST(req: NextRequest) {
   try {
-    const { customerName, customerEmail, transactionId, amount } = await req.json();
+    const { uroPayOrderId, customerName, customerEmail, referenceNumber, amount } =
+      await req.json();
 
-    if (!customerName || !customerEmail || !transactionId) {
+    if (!uroPayOrderId || !customerEmail) {
       return NextResponse.json(
         { success: false, error: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(customerEmail)) {
+    const status = await getOrderStatus(uroPayOrderId);
+
+    if (status.orderStatus !== "COMPLETED") {
       return NextResponse.json(
-        { success: false, error: "Invalid email address" },
-        { status: 400 }
+        { success: false, error: "Payment not yet verified" },
+        { status: 402 }
       );
     }
 
     try {
       await sendPurchaseEmail({
         customerEmail,
-        customerName,
+        customerName: customerName || "Valued Customer",
         amount: amount || 299,
-        paymentId: transactionId,
+        paymentId: referenceNumber || uroPayOrderId,
       });
     } catch (emailError) {
       console.error("Failed to send buyer email:", emailError);
@@ -33,9 +36,9 @@ export async function POST(req: NextRequest) {
 
     try {
       await sendSellerNotification({
-        customerName,
+        customerName: customerName || "Unknown",
         customerEmail,
-        transactionId,
+        transactionId: referenceNumber || uroPayOrderId,
         amount: amount || 299,
       });
     } catch (emailError) {
@@ -46,7 +49,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Confirm payment error:", error);
     return NextResponse.json(
-      { success: false, error: "Server error. Please try again." },
+      { success: false, error: "Server error" },
       { status: 500 }
     );
   }
